@@ -3,8 +3,6 @@ import Section from '../Section/Section';
 import ContactUsForm from '../ContactUsForm/ContactUsForm';
 import {Row, Col} from 'reactstrap';
 import AddressCard from '../../components/Cards/AddressCard';
-import axios from 'axios';
-import axInstance from '../../connection/axiosConn';
 
 const ContactBody = () => {
     const [completeAddress, setUpdateAddress] = useState([
@@ -20,34 +18,6 @@ const ContactBody = () => {
           wrk_hrs: '9:00 AM - 6:00PM'
         }
       ]);
-
-      useEffect(() => {
-        const showData = {...completeAddress};
-        axios.get(`${axInstance}/getAddress/`)
-         .then(res => {
-           if(res.status === 200)
-           {
-            const newData = res.data.map((el)=>{
-                delete el._id; delete el.createdAt; delete el.updatedAt;
-                return el; 
-              });
-            
-            showData[0].address1 = newData[0].address1;
-            showData[0].address2 = newData[0].address2;
-            showData[0].city = newData[0].city;
-            showData[0].state = newData[0].state;
-            showData[0].contact_1 = newData[0].mobile_1;
-            showData[0].contact_2 = newData[0].mobile_2;
-            showData[0].pincode = newData[0].pincode;
-            showData[0].email = newData[0].email;
-            showData[0].wrk_hrs = newData[0].working_hrs;
-            setUpdateAddress(showData);
-           }
-         })
-         .catch(err => {
-           console.log(err);
-         });  
-      },[]);  
   
     return(
         <>

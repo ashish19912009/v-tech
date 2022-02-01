@@ -5,7 +5,7 @@ import { Container } from "reactstrap";
 function DarkFooter() {
 
   const openTwitter = ()=>{
-    window.open('https://www.linkedin.com/company/vaidik-technologies-pvt-ltd/?originalSubdomain=in','_blank');
+    window.open('https://www.linkedin.com/company/vaidik-technologies-pvt-ltd/','_blank');
   }
   const openFacebook = ()=>{
     window.open('https://www.facebook.com/vaidik.tech','_blank');

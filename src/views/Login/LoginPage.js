@@ -2,8 +2,6 @@ import React from "react";
 import IndexNavbar from "../../components/Navbars/IndexNavbar";
 import DarkFooter from "../../components/Footers/DarkFooter";
 import LogoSmall from '../../components/Logo/LogoSmall/LogoSmall';
-import axInstance from '../../connection/axiosConn';
-import axios from 'axios';
 
 // reactstrap components
 import {
@@ -41,28 +39,6 @@ const LoginPage = () => {
     };
   });
 
-const onFormSubmit = (e) => {
-  e.preventDefault();
-    const username = document.querySelector('#username').value;
-    const password = document.querySelector('#password').value;    
-
-    axios.get(`${axInstance}/Login/${username}/${password}`,{withCredentials: true})
-    .then(res => {
-        const usrname = res.data.map((el)=>{
-                return el.username;
-              }).toString();
-
-        if(usrname === username)
-        {
-          window.location = "/AdminHome/";
-        }
-        else{
-          console.log("Kindly enter correct username and password !!");
-        }
-    })
-    .catch(err => console.log(err));
-
-  }
   return (
     <>
       <IndexNavbar />
@@ -77,7 +53,7 @@ const onFormSubmit = (e) => {
           <Container>
             <Col className="ml-auto mr-auto" md="4">
               <Card className="card-login card-plain">
-                <Form action="" className="form" onSubmit={onFormSubmit}>
+                <Form action="" className="form">
                   <CardHeader className="text-center">
                     <div className="logo-container" style={{height:'100px', width:'100px'}}>
                     <LogoSmall/>

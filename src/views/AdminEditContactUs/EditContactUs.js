@@ -4,8 +4,6 @@ import {Col, Row, Form, FormGroup, Input, Button} from 'reactstrap';
 import DarkFooter from "../../components/Footers/DarkFooter";
 import Section from '../../components/Section/Section';
 import AddressCard from '../../components/Cards/AddressCard';
-import axInstance from '../../connection/axiosConn';
-import axios from 'axios';
 
 const EditContactUs = () => {
 
@@ -24,34 +22,6 @@ const EditContactUs = () => {
     }
   ]);
 
-  useEffect(() => {
-    const showData = {...completeAddress};
-    axios.get(`${axInstance}/getAddress/`)
-     .then(res => {
-       if(res.status === 200)
-       {
-        const newData = res.data.map((el)=>{
-            delete el._id; delete el.createdAt; delete el.updatedAt;
-            return el; 
-          });
-        
-        showData[0].address1 = newData[0].address1;
-        showData[0].address2 = newData[0].address2;
-        showData[0].city = newData[0].city;
-        showData[0].state = newData[0].state;
-        showData[0].contact_1 = newData[0].mobile_1;
-        showData[0].contact_2 = newData[0].mobile_2;
-        showData[0].pincode = newData[0].pincode;
-        showData[0].email = newData[0].email;
-        showData[0].wrk_hrs = newData[0].working_hrs;
-        setUpdateAddress(showData);
-       }
-     })
-     .catch(err => {
-       console.log(err);
-     });  
-  },[completeAddress]);
-
 
 const  onContactFormSubmit = (e) => {
     e.preventDefault();
@@ -66,17 +36,6 @@ const  onContactFormSubmit = (e) => {
     newAddress[0].email = document.getElementById('email').value;
     newAddress[0].pincode = document.getElementById('pincode').value;
     newAddress[0].wrk_hrs = document.getElementById('wrk_hrs').value;
-
-     axios.post(`${axInstance}/updateAddress/`,newAddress[0])
-     .then(res => {
-       if(res.status === 200)
-       {
-         setUpdateAddress(newAddress);
-       }
-     })
-     .catch(err => {
-       console.log(err);
-     });
 
   }
 
