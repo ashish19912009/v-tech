@@ -5,10 +5,10 @@ import { Container } from "reactstrap";
 function DarkFooter() {
 
   const openTwitter = ()=>{
-    window.open('https://www.linkedin.com/company/vaidik-technologies-pvt-ltd/','_blank');
+    // window.open('https://www.linkedin.com/company/vaidik-technologies-pvt-ltd/','_blank');
   }
   const openFacebook = ()=>{
-    window.open('https://www.facebook.com/vaidik.tech','_blank');
+    // window.open('https://www.facebook.com/vaidik.tech','_blank');
   }
   return (
     <footer className="footer" data-background-color="black">

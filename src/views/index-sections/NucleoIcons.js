@@ -30,7 +30,6 @@ function NucleoIcons() {
               <Button
                 className="btn-round"
                 color="info"
-                href="https://nucleoapp.com/?ref=1712"
                 outline
                 size="lg"
                 target="_blank"

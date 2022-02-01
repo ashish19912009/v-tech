@@ -13,7 +13,7 @@ function NucleoIcons() {
       <header>
         <h1>Nucleo Outline Web Font v2.9</h1>
         <p>
-          <a href="https://nucleoapp.com/?ref=1712">nucleoapp.com</a>
+          <a>nucleoapp.com</a>
         </p>
       </header>
       <div id="cd-nav">
